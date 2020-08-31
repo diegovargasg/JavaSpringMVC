@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contact Manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container-fluid">
+		<table border="1" class="">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Email</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr th:each="contact: ${listContact}">
+	      			<td th:text="${contact.id}"></td>
+	      			<td th:text="${contact.name}"></td>
+	      			<td th:text="${contact.email}"></td>
+	      			<td th:text="${contact.address}"></td>
+	      			<td th:text="${contact.phone}"></td>
+	    		</tr>
+			</tbody>
+		</table>
+		<a class="h3" href="/new">Add new contact</a>
+	</div>
+</body>
+</html>
