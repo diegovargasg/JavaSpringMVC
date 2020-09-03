@@ -7,7 +7,8 @@
 </head>
 <body>
 	<div class="container-fluid mt-5">
-		<table border="1" class="">
+		<h1 class="mb-5">Contact Manager</h1>
+		<table border="1" class="table table-striped table-bordered">
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -15,6 +16,7 @@
 					<th>Address</th>
 					<th>Email</th>
 					<th>Phone</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,6 +26,10 @@
 	      			<td th:text="${contact.email}"></td>
 	      			<td th:text="${contact.address}"></td>
 	      			<td th:text="${contact.phone}"></td>
+	      			<td>
+	      				<a class="btn btn-info" th:href="@{/edit(id=${contact.id})}">Edit</a>
+	      				<a class="btn btn-danger" th:href="@{/delete(id=${contact.id})}">Delete</a>
+	      			</td>
 	    		</tr>
 			</tbody>
 		</table>

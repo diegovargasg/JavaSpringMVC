@@ -2,6 +2,8 @@ package com.diegovargasg.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,8 +41,32 @@ public class MainController {
 	
 	@RequestMapping(value = "/save", method= RequestMethod.POST)
 	public ModelAndView saveContact(@ModelAttribute Contact contact) {
-		System.out.println(contact);
-		contactDao.save(contact);
+		if(contact.getId() == null) {
+			contactDao.save(contact);
+		} else {
+			contactDao.update(contact);
+		}
+	
+		return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping(value = "/edit", method= RequestMethod.GET)
+	public ModelAndView editContact(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Contact contact = contactDao.get(id);
+		
+		ModelAndView model = new ModelAndView();
+		model.addObject("contact", contact);
+		model.setViewName("contact");
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/delete", method= RequestMethod.GET)
+	public ModelAndView deleteContact(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		contactDao.delete(id);
+		
 		return new ModelAndView("redirect:/");
 	}
 }
