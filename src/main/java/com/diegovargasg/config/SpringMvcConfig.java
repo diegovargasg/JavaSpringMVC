@@ -24,9 +24,9 @@ public class SpringMvcConfig {
 	public DataSource getDataSource() {
 		dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/contactdb");
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/contacts");
+		dataSource.setUsername("userdb");
+		dataSource.setPassword("password");
 		
 		return dataSource;
 	}
